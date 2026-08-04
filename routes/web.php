@@ -5,6 +5,7 @@
 // Cache-Control: no-cache para HTML
 
 use App\Http\Controllers\RiotController;
+use App\Http\Controllers\SteamController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -14,4 +15,9 @@ Route::get('/', function () {
 Route::prefix('api/lol')->group(function () {
     Route::get('/profile', [RiotController::class, 'profile']);
     Route::get('/live', [RiotController::class, 'live']);
+});
+
+Route::prefix('api/steam')->group(function () {
+    Route::get('/games', [SteamController::class, 'games']);
+    Route::get('/profile', [SteamController::class, 'profile']);
 });

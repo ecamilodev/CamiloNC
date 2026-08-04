@@ -1136,52 +1136,92 @@ body.is-live .live-badge { display: inline-flex; }
     grid-template-columns: repeat(2, 1fr);
     gap: 1.5rem;
 }
+.playlist-grid .playlist-card:last-child:nth-child(odd) {
+    grid-column: 1 / -1;
+    max-width: 50%;
+    margin-inline: auto;
+}
+/* Playlist card — link directo a Spotify */
 .playlist-card {
-    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    padding: 1.25rem;
     background: rgba(15, 8, 36, 0.7);
-    border: var(--border-panel);
-    border-radius: var(--radius);
-    border-top: 2px solid var(--spotify);
-    transition: box-shadow 0.25s, transform 0.25s;
-    will-change: transform;
+    border: 1px solid rgba(168, 85, 247, 0.18);
+    border-radius: 10px;
+    text-decoration: none;
+    color: inherit;
+    transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
 }
 .playlist-card:hover {
     transform: translateY(-4px);
-    box-shadow: 0 0 24px rgba(29, 185, 84, 0.2), var(--glow-rune);
+    border-color: #1db954;
+    box-shadow: 0 0 20px rgba(29, 185, 84, 0.15);
 }
-.playlist-card__header {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    margin-bottom: 1.25rem;
+
+.playlist-card__cover {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    border-radius: 8px;
+    background: linear-gradient(135deg, rgba(29, 185, 84, 0.1), rgba(124, 58, 237, 0.2));
+    display: grid;
+    place-items: center;
+    margin-bottom: 1rem;
+    overflow: hidden;
 }
-.playlist-card__emoji {
-    font-size: 2rem;
-    filter: drop-shadow(0 0 8px rgba(168, 85, 247, 0.3));
+.playlist-card__emoji-large {
+    font-size: 3.5rem;
+    filter: drop-shadow(0 0 12px rgba(168, 85, 247, 0.4));
+}
+.playlist-card__img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 8px;
+    position: absolute;
+    inset: 0;
+}
+.playlist-card__play {
+    position: absolute;
+    bottom: 0.75rem;
+    right: 0.75rem;
+    opacity: 0;
+    transform: translateY(8px);
+    transition: opacity 0.2s ease, transform 0.2s ease;
+}
+.playlist-card:hover .playlist-card__play {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.playlist-card__info {
+    flex: 1;
+    margin-bottom: 0.75rem;
 }
 .playlist-card__name {
     font-family: var(--font-display);
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     letter-spacing: 0.05em;
     color: var(--ivory);
+    margin-bottom: 0.2rem;
 }
 .playlist-card__desc {
     color: var(--ivory-muted);
     font-size: 0.85rem;
-    margin-top: 0.1rem;
 }
-.playlist-card__player {
-    aspect-ratio: 4 / 1;
-    background: repeating-linear-gradient(90deg, rgba(29, 185, 84, 0.05), rgba(29, 185, 84, 0.05) 4px, transparent 4px, transparent 8px), var(--midnight);
-    border-radius: var(--radius-sm);
-    border: 1px dashed rgba(29, 185, 84, 0.3);
-    display: grid;
-    place-items: center;
-    color: rgba(232, 220, 196, 0.4);
-    font-family: monospace;
+
+.playlist-card__open {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: #1db954;
     font-size: 0.8rem;
-    padding: 0.5rem;
-    text-align: center;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding-top: 0.75rem;
+    border-top: 1px solid rgba(29, 185, 84, 0.15);
 }
 
 /* =========================================================================
@@ -1435,6 +1475,9 @@ body.is-live .live-badge { display: inline-flex; }
     .game-row { grid-template-columns: 140px 1fr; }
     .game-row__meta { grid-column: 2 / -1; text-align: left; }
     .playlist-grid { grid-template-columns: 1fr; }
+    .playlist-grid .playlist-card:last-child:nth-child(odd) {
+        max-width: 100%;
+    }
     .champions { grid-template-columns: repeat(3, 1fr); }
     .site-header__actions .socials--compact { display: none; }
 }

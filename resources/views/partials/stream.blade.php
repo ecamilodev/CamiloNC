@@ -103,7 +103,7 @@
                     JUEGOS QUE DISFRUTO
                 </h2>
 
-                <ul class="games-strip">
+                <ul class="games-strip" id="games-strip">
                     @foreach ([
                         ['name' => 'League of Legends', 'img' => 'game-lol.jpg'],
                         ['name' => 'Minecraft', 'img' => 'game-minecraft.jpg'],

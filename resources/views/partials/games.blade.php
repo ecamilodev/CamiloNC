@@ -6,9 +6,11 @@
             <div class="section__divider" aria-hidden="true"></div>
         </header>
 
-        <div class="games-list">
+        {{-- Fallback estático: se muestra hasta que steam-games.js (si la API responde)
+             reemplaza el contenido con los juegos reales de Steam. --}}
+        <div class="games-list" id="games-list">
             @foreach ([
-                ['name' => 'League of Legends', 'desc' => 'Mi hogar competitivo. MOBA por excelencia.', 'hours' => '4.200h', 'img' => 'game-lol-wide.jpg'],
+                ['name' => 'League of Legends', 'desc' => 'Mi hogar competitivo. MOBA por excelencia.', 'hours' => '7.843h', 'img' => 'game-lol-wide.jpg'],
                 ['name' => 'Dead by Daylight', 'desc' => 'Terror asimétrico. Sobrevivir o cazar, no hay medias tintas.', 'hours' => '620h', 'img' => 'game-dbd-wide.jpg'],
                 ['name' => 'Minecraft', 'desc' => 'Construir, explorar, sobrevivir. El clásico eterno.', 'hours' => '830h', 'img' => 'game-mc-wide.jpg'],
                 ['name' => 'Halo', 'desc' => 'FPS de culto. Master Chief siempre presente.', 'hours' => '410h', 'img' => 'game-halo-wide.jpg'],
