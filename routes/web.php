@@ -15,6 +15,7 @@ Route::get('/', function () {
 Route::prefix('api/lol')->group(function () {
     Route::get('/profile', [RiotController::class, 'profile']);
     Route::get('/live', [RiotController::class, 'live']);
+    Route::get('/friends', [RiotController::class, 'friends']);
 });
 
 Route::prefix('api/steam')->group(function () {

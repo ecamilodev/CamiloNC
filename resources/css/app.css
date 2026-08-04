@@ -1229,7 +1229,7 @@ body.is-live .live-badge { display: inline-flex; }
    ========================================================================= */
 .squad {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
     gap: 1rem;
 }
 .friend {
@@ -1260,6 +1260,20 @@ body.is-live .live-badge { display: inline-flex; }
     border: 1px solid rgba(200, 160, 76, 0.4);
     flex-shrink: 0;
 }
+.friend__avatar-img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+    position: absolute;
+    inset: 0;
+}
+.friend__avatar-letter {
+    display: grid;
+    place-items: center;
+    width: 100%;
+    height: 100%;
+}
 .friend__dot {
     position: absolute;
     bottom: -1px;
@@ -1272,6 +1286,7 @@ body.is-live .live-badge { display: inline-flex; }
 .friend__dot--online    { background: var(--win); box-shadow: 0 0 6px var(--win); }
 .friend__dot--ingame    { background: var(--hextech); box-shadow: 0 0 6px var(--hextech); }
 .friend__dot--streaming { background: var(--danger); box-shadow: 0 0 6px var(--danger); }
+.friend__dot--offline   { background: #6b6b6b; box-shadow: 0 0 4px #6b6b6b; }
 .friend__nick {
     color: var(--ivory);
     font-weight: 600;
@@ -1281,6 +1296,14 @@ body.is-live .live-badge { display: inline-flex; }
 .friend__status--online    { color: var(--win); }
 .friend__status--ingame    { color: var(--hextech); }
 .friend__status--streaming { color: var(--danger); }
+.friend__status--offline   { color: #6b6b6b; }
+
+.friend__rank {
+    font-size: 0.7rem;
+    color: var(--gold);
+    letter-spacing: 0.1em;
+    margin-top: 0.15rem;
+}
 
 .squad__actions {
     text-align: center;
@@ -1485,6 +1508,7 @@ body.is-live .live-badge { display: inline-flex; }
     .lol-summary { grid-template-columns: 1fr 1fr; padding: 1rem; gap: 1rem; }
     .lol-summary__item:nth-child(2n+1) { border-right: 0; }
     .lol-summary__value { font-size: 1.15rem; }
+    .squad { grid-template-columns: repeat(2, 1fr); }
     .champion__portrait { width: 60px; height: 60px; }
     .hero__actions { flex-direction: column; align-items: stretch; }
     .hero__follow { justify-content: center; }

@@ -1,37 +1,41 @@
 <section id="squad" class="section">
     <div class="container">
         <header class="section__header">
-            <span class="section__eyebrow">◈ Party</span>
-            <h2 class="section__title">Mi escuadrón</h2>
+            <span class="section__eyebrow">◈ Squad</span>
+            <h2 class="section__title">La Ganga</h2>
             <div class="section__divider" aria-hidden="true"></div>
-            <p class="section__lead">Con los que siempre juego.</p>
+            <p class="section__lead">Con los que siempre juego y caemos.</p>
         </header>
 
+        @php
+            $friends = [
+                ['nick' => 'LORDDAMD',      'riot_id' => 'LORDDAMD',      'tag' => 'LAN'],
+                ['nick' => 'EliLopez',      'riot_id' => 'elilopez',       'tag' => 'LAN'],
+                ['nick' => 'xNoMercyx',     'riot_id' => 'xNoMercyx',      'tag' => '5117'],
+                ['nick' => 'BRILLITOSH',    'riot_id' => 'BRlLLITOSH',     'tag' => 'PEDRO'],
+                ['nick' => 'D4vidSG',       'riot_id' => 'D4vidSG',        'tag' => 'LAN'],
+                ['nick' => 'Dark8Sider',    'riot_id' => 'Dark8Sider',     'tag' => 'LAN'],
+                ['nick' => 'DarkFox',       'riot_id' => 'DarkFox',        'tag' => 'NGW'],
+                ['nick' => 'Kaoz Locked',   'riot_id' => 'Kaoz Locked',    'tag' => '4151'],
+                ['nick' => 'MR20 La perla', 'riot_id' => 'MR20 La perla',  'tag' => 'LAN'],
+                ['nick' => 'Orca4K',        'riot_id' => 'Orca4K',         'tag' => 'MAR'],
+            ];
+        @endphp
+
         <div class="squad">
-            @foreach ([
-                ['nick' => 'ZedMain',   'status' => 'En partida', 'state' => 'ingame'],
-                ['nick' => 'ElParcero', 'status' => 'En línea',   'state' => 'online'],
-                ['nick' => 'SrKapi',    'status' => 'En línea',   'state' => 'online'],
-                ['nick' => 'NicoUWU',   'status' => 'En línea',   'state' => 'online'],
-                ['nick' => 'JotaPe',    'status' => 'En partida', 'state' => 'ingame'],
-                ['nick' => 'Luciernaga','status' => 'En stream',  'state' => 'streaming'],
-            ] as $f)
-                <div class="friend">
-                    <div class="friend__avatar">
-                        {{-- Placeholder: reemplaza por <img src="{{ asset('images/friends/'.strtolower($f['nick']).'.jpg') }}" alt="{{ $f['nick'] }}" loading="lazy" decoding="async"> --}}
-                        <span>{{ substr($f['nick'], 0, 1) }}</span>
-                        <span class="friend__dot friend__dot--{{ $f['state'] }}"></span>
+            @foreach ($friends as $index => $f)
+                <div class="friend" data-riot-id="{{ $f['riot_id'] }}" data-riot-tag="{{ $f['tag'] }}" id="friend-{{ $index }}">
+                    <div class="friend__avatar" id="friend-avatar-{{ $index }}">
+                        <span class="friend__avatar-letter">{{ substr($f['nick'], 0, 1) }}</span>
+                        <span class="friend__dot friend__dot--offline" id="friend-dot-{{ $index }}"></span>
                     </div>
                     <div class="friend__info">
                         <div class="friend__nick">{{ $f['nick'] }}</div>
-                        <div class="friend__status friend__status--{{ $f['state'] }}">{{ $f['status'] }}</div>
+                        <div class="friend__status" id="friend-status-{{ $index }}">Offline</div>
+                        <div class="friend__rank" id="friend-rank-{{ $index }}"></div>
                     </div>
                 </div>
             @endforeach
-        </div>
-
-        <div class="squad__actions">
-            <a href="#" class="btn btn--ghost">Ver todos los amigos</a>
         </div>
     </div>
 </section>
